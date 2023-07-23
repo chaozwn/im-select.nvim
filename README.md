@@ -86,6 +86,11 @@ require('im_select').setup {
     -- You can use `im-select` or `fcitx5-remote -n` to get the IM's name you preferred
     default_im_select  = "com.apple.keylayout.ABC",
 
+    -- IM will auto set default_main_select in `insert` mode,
+    -- not restore previous input method. some one who likes
+    -- set not en input method swith en first can use it.
+    default_main_select = nil,
+
     -- Can be binary's name or binary's full path,
     -- e.g. 'im-select' or '/usr/local/bin/im-select'
     -- For Windows/WSL, default: "im-select.exe"

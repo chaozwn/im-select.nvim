@@ -39,6 +39,8 @@ local C = {
     default_command = "im-select.exe",
     -- default input method in normal mode.
     default_method_selected = "1033",
+    -- default main input method
+    default_main_select = nil,
 
     -- Restore the default input method state when the following events are triggered
     set_default_events = { "VimEnter", "FocusGained", "InsertLeave", "CmdlineLeave" },
@@ -87,6 +89,10 @@ local function set_opts(opts)
 
     if opts.default_command ~= nil then
         C.default_command = opts.default_command
+    end
+
+    if opts.default_main_select ~= nil then
+        C.default_main_select = opts.default_main_select
     end
 
     if opts.set_default_events ~= nil and type(opts.set_default_events) == "table" then
@@ -142,6 +148,9 @@ end
 
 local function restore_default_im()
     local current = get_current_select(C.default_command)
+    if C.default_main_select ~= nil then
+        current = C.default_main_select
+    end
     vim.api.nvim_set_var("im_select_saved_state", current)
 
     if current ~= C.default_method_selected then
