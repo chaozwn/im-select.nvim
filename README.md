@@ -177,7 +177,12 @@ Options with its default values
             -- For macOS, default: "im-select"
             -- For Linux, default: "fcitx5-remote" or "fcitx-remote" or "ibus"
             default_command = 'im-select.exe',
-
+            
+            -- IM will auto set default_main_select in `insert` mode,
+            -- not restore previous input method. some one who likes
+            -- set not en input method swith en first can use it.
+            default_main_select = nil,
+  
             -- Restore the default input method state when the following events are triggered
             set_default_events = { "VimEnter", "FocusGained", "InsertLeave", "CmdlineLeave" },
 
